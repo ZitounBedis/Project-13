@@ -1,0 +1,289 @@
+body {
+  margin: 1.5em;
+  font-family: "Poppins", sans-serif;
+  background-color: white;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("https://sneakernews.com/wp-content/uploads/2021/12/22-sneakers-2022-web.jpg");
+  background-size: cover;
+  background-position-x: 15%;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  animation: introLoad 2s forwards;
+  overflow: hidden;
+}
+
+.logo {
+  color: white;
+  font-weight: bold;
+}
+
+nav {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: white;
+  height: 100vh;
+  width: 50%;
+  z-index: 2;
+  text-transform: uppercase;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out;
+
+  ul {
+    list-style-type: none; 
+    padding: 0;
+    margin-top: 8em;
+
+    a {
+      color: #232323;
+      padding: 0.75em 2em;
+      display: block;
+
+      &:hover {
+        background: rgb(228, 225, 225);
+      }
+    }
+  }
+
+  .close {
+    float: right;
+    margin: 2em;
+    width: 2.5em;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+
+  svg {
+    width: 2.3em;
+    margin-top: -0.6em;
+    cursor: pointer;
+  }
+}
+
+h1 {
+  font-size: 3rem;
+  margin-top: 2em;
+  line-height: 3.3rem;
+}
+
+.subhead {
+  font-size: 1.3rem;
+  //margin-top: -0.9em;
+}
+
+section.hero {
+  color: white;
+  height: 80vh;
+  animation: moveDown 1s ease-in-out forwards; 
+  opacity: 0; 
+
+  .down-arrow {
+    position: absolute;
+    bottom: 2em;
+    width: 1em;
+    animation: moveArrow 1s alternate-reverse infinite;
+
+  }
+}
+
+.more-info {
+  img {
+    width: 100%;
+    object-fit: cover;
+    height: 8em;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .desc {
+    line-height: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 680px) {
+  body {
+    margin: 1.5em 5em;
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+@media only screen and (min-width: 920px) {
+  .menu {
+    display: none;
+  }
+
+  nav {
+    transform: translateX(0);
+    position: unset;
+    display: block;
+    width: auto;
+    height: auto;
+    background: none;
+
+    svg.close {
+      display: none;
+    }
+
+    ul {
+      display: flex;
+      margin: 0;
+
+      a {
+        color: white;
+        padding: 0.5em 1.5em;
+        font-size: 0.9rem;
+
+        &:hover {
+          background: none;
+          //text-decoration: underline;
+
+          //Transition: scaling text on hover
+          font-size: 1.1em;
+          margin: 0;
+          text-align: center;
+          -webkit-transition: font-size 0.5s ease;
+          -moz-transition: font-size 0.5s ease;
+          -o-transition: font-size 0.5s ease;
+          transition: font-size 0.5s ease;
+        }
+      }
+    }
+  }
+
+  .hero-img {
+    left: unset;
+    right: 0;
+    width: 50%;
+    height: 42em;
+  }
+
+  .logo {
+    color: #232323;
+
+    span {
+      color: #b3e140;
+    }
+  }
+
+  section.hero {
+    color: #232323;
+    height: auto;
+    width: 40%;
+    margin-bottom: 8em;
+
+    svg.down-arrow {
+      position: unset;
+      
+
+      path {
+        fill: #232323;
+      }
+    }
+  }
+
+  .feature {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 3em;
+    margin-bottom: 8em;
+
+    img {
+      width: 25em;
+      height: 192px;
+    }
+    
+    .content {
+      text-align: right;
+      width: 25em;
+    }
+  }
+
+  //Make second section reverse
+  .feature.left {
+    grid-template-areas: "left right";
+
+    img {
+      grid-area: left;
+    }
+
+    .content {
+      text-align: left;
+      width: 25em;
+      justify-self: left;
+    }
+  }
+}
+
+.open-nav {
+    transform: translateX(0);
+}
+
+
+@media only screen and (min-width: 1200px) {
+
+    .hero-img {
+        max-width: 100%;
+        height: 95%;
+    }
+
+    .more-info {
+        margin-top: 18em;
+    }
+
+    .wrapper {
+        width: 1200px;
+        margin: 0 auto; //centering elements
+    }
+
+    .feature {
+        gap: 0;
+    }
+}
+
+//Animate image - top to bottom
+@keyframes introLoad {
+    from {
+        clip-path: polygon(0 0, 100% 0%, 100% 0, 0 0);
+    }
+    to {
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+    }
+}
+
+//Animate arrow - up.and.down
+@keyframes moveArrow {
+    from {
+        transform: translateY(-30px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+//Animate Text - slowly fade in
+@keyframes moveDown {
+    from {
+        transform: translateY(-100px);
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
